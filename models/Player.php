@@ -2,16 +2,13 @@
 namespace Models;
 
 class Player {
-    private ?int $id;
-    private ?string $firstName;
-    private ?string $lastName;
-    // Ajoute ici les autres champs de ta table (image, etc.)
+    private ?int $id = null;
+    private ?string $nickname = null;
+    private ?string $bio = null;
+    private ?string $portrait_url = null;
+    private ?string $team_name = null;
 
-    public function getId(): ?int { return $this->id; }
-    public function setId(int $id): void { $this->id = $id; }
-
-    public function getFirstName(): ?string { return $this->firstName; }
-    public function setFirstName(string $firstName): void { $this->firstName = $firstName; }
-    
-    // ... Fais pareil pour les autres champs
+    public function getNickname(): ?string { return $this->nickname; }
+    public function getPortraitUrl(): ?string { return $this->portrait_url; }
+    public function getTeamName(): ?string { return $this->team_name; }
 }
