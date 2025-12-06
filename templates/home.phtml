@@ -1,4 +1,7 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'db.php'; 
+include 'header.phtml'; 
+?>
 
 <section class="hero">
     <div class="hero-content">
@@ -13,8 +16,9 @@
     
     <div style="text-align: center;">
         <div class="card" style="display:inline-block; max-width:400px; border:none; background:none;">
-            <a href="team.php?id=1">
-                <img src="assets/img/logo_owls.png" alt="Angry Owls Logo"> </a>
+            <a href="team.phtml?id=1">
+                <img src="assets/img/logo_owls.png" alt="Angry Owls Logo"> 
+            </a>
             <h3 class="text-yellow">Angry Owls</h3>
             
             <div style="display:flex; gap:10px; justify-content:center; margin-top:20px;">
@@ -22,15 +26,7 @@
                     <img src="assets/img/player1.jpg" style="width:100%; border-radius:5px;">
                     <span class="text-pink" style="font-size:0.8rem; display:block;">LADSO</span>
                 </div>
-                <div style="width: 100px;">
-                    <img src="assets/img/player2.jpg" style="width:100%; border-radius:5px;">
-                    <span class="text-pink" style="font-size:0.8rem; display:block;">REDWITCH</span>
                 </div>
-                 <div style="width: 100px;">
-                    <img src="assets/img/player3.jpg" style="width:100%; border-radius:5px;">
-                    <span class="text-pink" style="font-size:0.8rem; display:block;">SOLTAN</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -41,18 +37,9 @@
             <img src="assets/img/dundy.jpg" alt="Dundy">
             <h3 class="text-pink">DUNDY</h3>
             <p class="text-yellow">Chatty Parrots</p>
+            <a href="player.phtml?id=10" class="btn">VOIR PROFIL</a>
         </div>
-        <div class="card player">
-            <img src="assets/img/wofin.jpg" alt="Wofin">
-            <h3 class="text-pink">WOFIN</h3>
-            <p class="text-yellow">Panthers</p>
         </div>
-        <div class="card player">
-            <img src="assets/img/stonk.jpg" alt="Stonk">
-            <h3 class="text-pink">STONK</h3>
-            <p class="text-yellow">Sparrow</p>
-        </div>
-    </div>
 
     <h2 class="text-blue" style="text-align:center; margin: 60px 0 30px; text-decoration: underline;">LE DERNIER MATCH</h2>
     
@@ -66,7 +53,7 @@
             <img src="assets/img/logo_owls.png" style="width:150px; height:150px;">
         </div>
         <div style="text-align:center;">
-             <a href="match.php?id=12" class="btn">DÉTAILS DU MATCH</a>
+             <a href="match.phtml?id=12" class="btn">DÉTAILS DU MATCH</a>
         </div>
     </div>
 
