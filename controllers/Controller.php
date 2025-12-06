@@ -28,6 +28,5 @@ class Controller {
 
         require_once "templates/partials/header.phtml";
         require_once "templates/home.phtml";
-        require_once "templates/partials/footer.phtml";
     }
 }
