@@ -2,10 +2,10 @@
 namespace Managers;
 
 use Config\DB;
-use Models\Game; // On garde le Model "Game" car la table SQL est "games"
+use Models\Game;
 use PDO;
 
-class MatchManager {
+class GameManager {
     private PDO $pdo;
 
     public function __construct() {
@@ -30,7 +30,6 @@ class MatchManager {
                 ORDER BY g.date DESC';
 
         $query = $this->pdo->query($sql);
-        // On mappe les résultats sur la classe Models\Game
         $query->setFetchMode(PDO::FETCH_CLASS, Game::class);
         return $query->fetchAll();
     }
