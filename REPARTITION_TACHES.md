@@ -13,6 +13,7 @@ debut du CSS
 header.php
 Organisation
 à aidé tom pour managers et models .php
+correction des requires
 
 Sasha :
 Schema de la base de donnée
