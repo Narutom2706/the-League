@@ -1,0 +1,75 @@
+<?php include 'header.php'; ?>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>TOUT SUR LA LEAGUE</h1>
+        <p>Les players, les teams et l'actu des matchs</p>
+    </div>
+</section>
+
+<main class="container">
+    
+    <h2 class="text-yellow" style="text-align:center; margin-bottom: 30px; text-decoration: underline;">LA TEAM À LA UNE</h2>
+    
+    <div style="text-align: center;">
+        <div class="card" style="display:inline-block; max-width:400px; border:none; background:none;">
+            <a href="team.php?id=1">
+                <img src="assets/img/logo_owls.png" alt="Angry Owls Logo"> </a>
+            <h3 class="text-yellow">Angry Owls</h3>
+            
+            <div style="display:flex; gap:10px; justify-content:center; margin-top:20px;">
+                <div style="width: 100px;">
+                    <img src="assets/img/player1.jpg" style="width:100%; border-radius:5px;">
+                    <span class="text-pink" style="font-size:0.8rem; display:block;">LADSO</span>
+                </div>
+                <div style="width: 100px;">
+                    <img src="assets/img/player2.jpg" style="width:100%; border-radius:5px;">
+                    <span class="text-pink" style="font-size:0.8rem; display:block;">REDWITCH</span>
+                </div>
+                 <div style="width: 100px;">
+                    <img src="assets/img/player3.jpg" style="width:100%; border-radius:5px;">
+                    <span class="text-pink" style="font-size:0.8rem; display:block;">SOLTAN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-pink" style="text-align:center; margin: 60px 0 30px; text-decoration: underline;">LES PLAYERS À LA UNE</h2>
+    
+    <div class="grid-3">
+        <div class="card player">
+            <img src="assets/img/dundy.jpg" alt="Dundy">
+            <h3 class="text-pink">DUNDY</h3>
+            <p class="text-yellow">Chatty Parrots</p>
+        </div>
+        <div class="card player">
+            <img src="assets/img/wofin.jpg" alt="Wofin">
+            <h3 class="text-pink">WOFIN</h3>
+            <p class="text-yellow">Panthers</p>
+        </div>
+        <div class="card player">
+            <img src="assets/img/stonk.jpg" alt="Stonk">
+            <h3 class="text-pink">STONK</h3>
+            <p class="text-yellow">Sparrow</p>
+        </div>
+    </div>
+
+    <h2 class="text-blue" style="text-align:center; margin: 60px 0 30px; text-decoration: underline;">LE DERNIER MATCH</h2>
+    
+    <div class="card" style="max-width: 800px; margin: 0 auto; padding: 40px;">
+        <h3 style="text-align:center; margin-bottom:10px;">VENDETTA VS OWLS</h3>
+        <p style="text-align:center; font-size: 0.8rem; color: var(--grey);">17/01/2024</p>
+        
+        <div style="display:flex; justify-content: space-around; align-items: center; margin-top: 30px;">
+            <img src="assets/img/logo_vendetta.png" style="width:150px; height:150px;">
+            <span style="font-size: 2rem; font-weight: bold;">VS</span>
+            <img src="assets/img/logo_owls.png" style="width:150px; height:150px;">
+        </div>
+        <div style="text-align:center;">
+             <a href="match.php?id=12" class="btn">DÉTAILS DU MATCH</a>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
