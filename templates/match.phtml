@@ -1,0 +1,55 @@
+<?php include 'header.phtml'; ?>
+
+<main class="container">
+
+    <div style="text-align: center; padding-top: 20px;">
+        <h1 class="text-blue" style="font-size: 2.5rem; margin-bottom: 10px;">
+            <?= htmlspecialchars($match['team1_name']) ?> VS <?= htmlspecialchars($match['team2_name']) ?>
+        </h1>
+        <p class="text-blue" style="font-weight: 700; font-size: 1.1rem;">
+            <?= date('d/m/Y', strtotime($match['date'])) ?>
+        </p>
+    </div>
+
+    <div class="match-header-logos">
+        <div class="match-box-img <?= ($match['team_1'] == $match['winner']) ? 'winner-box' : '' ?>">
+            <img src="<?= htmlspecialchars($match['team1_logo']) ?>" alt="<?= htmlspecialchars($match['team1_name']) ?>">
+        </div>
+
+        <div class="match-box-img <?= ($match['team_2'] == $match['winner']) ? 'winner-box' : '' ?>">
+            <img src="<?= htmlspecialchars($match['team2_logo']) ?>" alt="<?= htmlspecialchars($match['team2_name']) ?>">
+        </div>
+    </div>
+
+    <h2 class="text-purple">LES PERFORMANCES</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>PLAYER</th>
+                <th>TEAM</th>
+                <th>POINTS</th>
+                <th>ASSISTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($matchPerformances)): ?>
+                <?php foreach ($matchPerformances as $perf): ?>
+                    <tr>
+                        <td class="text-pink"><?= htmlspecialchars($perf['player_name']) ?></td>
+                        <td class="text-yellow"><?= htmlspecialchars($perf['team_name']) ?></td>
+                        <td class="text-white"><?= $perf['points'] ?></td>
+                        <td class="text-white"><?= $perf['assists'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4" style="color: var(--grey); padding:30px; text-align:center;">Aucune stat pour ce match</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+
+</main>
+</body>
+</html>

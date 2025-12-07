@@ -1,0 +1,79 @@
+<?php include 'header.phtml'; ?>
+
+<main class="container" style="text-align: center;">
+
+    <h1 class="text-pink" style="font-size: 3rem; margin: 40px 0 20px;">
+        <?= htmlspecialchars($player['nickname']) ?>
+    </h1>
+
+    <div style="margin: 0 auto 60px;">
+        <img src="<?= htmlspecialchars($player['portrait_url']) ?>" 
+             alt="<?= htmlspecialchars($player['nickname']) ?>"
+             style="margin: 0 auto; width: 300px; height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+    </div>
+
+    <h2 class="text-blue">SES PERFORMANCES</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>TEAM ADVERSE</th>
+                <th>POINTS</th>
+                <th>ASSISTS</th>
+                <th>VICTOIRE ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($performances)): ?>
+                <?php foreach ($performances as $perf): ?>
+                    <?php 
+                        // Nom de l'adversaire
+                        $opponentName = ($player['team'] == $perf['t1_id']) ? $perf['t2_name'] : $perf['t1_name'];
+                        // Victoire ?
+                        $isWin = ($perf['winner'] == $player['team']);
+                    ?>
+                    <tr>
+                        <td class="text-yellow"><?= htmlspecialchars($opponentName) ?></td>
+                        <td class="text-white"><?= $perf['points'] ?></td>
+                        <td class="text-white"><?= $perf['assists'] ?></td>
+                        <td class="<?= $isWin ? 'text-green' : 'text-red' ?>">
+                            <?= $isWin ? 'Oui' : 'Non' ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4" style="color: var(--grey); text-align: center;">Aucune stat.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+
+    <h2 class="text-yellow" style="margin-top: 80px;">SA TEAM</h2>
+    
+    <?php if (!empty($teammates)): ?>
+        <div class="flex-center-grid">
+            <?php foreach ($teammates as $mate): ?>
+                
+                <div class="card player-list-card" style="width: 250px;">
+                    <a href="index.php?page=player&id=<?= $mate['id'] ?>" style="width:100%;">
+                        <img src="<?= htmlspecialchars($mate['portrait_url']) ?>" 
+                             alt="<?= htmlspecialchars($mate['nickname']) ?>"
+                             style="height: 250px; object-fit: cover; border-radius: 5px;">
+                    </a>
+                    
+                    <h3 class="text-pink" style="margin-top: 15px;">
+                        <?= htmlspecialchars($mate['nickname']) ?>
+                    </h3>
+                    
+                    <a href="index.php?page=player&id=<?= $mate['id'] ?>" class="btn" style="border-color: var(--grey); color: var(--grey);">
+                        DÉCOUVREZ <?= strtoupper($mate['nickname']) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+</main>
+</body>
+</html>

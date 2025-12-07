@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <header class="header">
-    <a href="index.phtml">
-    <li>the league</li>
-    </header>
+<?php include 'header.phtml'; ?>
 
-    <nav>
-        <a href="teams.phtml" class="bouton-nav">teams</a>
-        <a href="players.phtml" class="bouton-nav">players</a>
-        <a href="matchs.phtml" class="bouton-nav">matchs</a>
-    </nav>
-</body>
-    <div >
+<main class="container">
+    <h2 class="text-yellow">LES TEAMS DE LA LEAGUE</h2>
 
+    <div class="grid-3">
+        <?php foreach ($teams as $team): ?>
+            <div class="card team-card">
+                <img src="<?= htmlspecialchars($team['logo_url']) ?>" 
+                     alt="<?= htmlspecialchars($team['name']) ?>">
+                     
+                <h3 class="text-yellow"><?= htmlspecialchars($team['name']) ?></h3>
+                <p><?= htmlspecialchars($team['description']) ?></p>
+                
+                <a href="index.php?page=team&id=<?= $team['id'] ?>" class="btn">
+                    DÉCOUVREZ <?= strtoupper($team['name']) ?>
+                </a>
+            </div>
+        <?php endforeach; ?>
     </div>
+</main>
 </body>
 </html>

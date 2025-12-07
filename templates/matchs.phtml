@@ -1,23 +1,40 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-<body>
-    <header class="header">
-    <a href="index.phtml">
-    <li>the league</li>
-    </header>
-   <nav>
-        <a href="teams.phtml" class="bouton-nav">teams</a>
-        <a href="players.phtml" class="bouton-nav">players</a>
-        <a href="matchs.phtml" class="bouton-nav">matchs</a>
-    </nav>
-</body>
-</head>
-<body>
-    <div >
-    </div>
+<?php include 'header.phtml'; ?>
+
+<main class="container">
+    <h2 class="text-blue">LES MATCHS</h2>
+
+    <?php foreach ($matchs as $game): ?>
+        <div class="match-card" style="margin-bottom: 40px;">
+            <h3 style="text-align: center; color: var(--blue); margin-bottom: 10px;">
+                <?= htmlspecialchars($game['name']) ?>
+            </h3>
+            <p style="text-align: center; color: var(--grey); font-size: 0.8rem; margin-bottom: 30px;">
+                <?= date("d/m/Y", strtotime($game['date'])) ?>
+            </p>
+
+            <div style="display:flex; justify-content: center; align-items: center; gap: 40px;">
+                
+                <div style="text-align: center;">
+                    <img src="<?= htmlspecialchars($game['team1_logo']) ?>" 
+                         style="width: 120px; height: 120px; object-fit: contain;">
+                </div>
+
+                <span style="font-size: 2rem; font-weight: bold; color: var(--white);">VS</span>
+
+                <div style="text-align: center;">
+                    <img src="<?= htmlspecialchars($game['team2_logo']) ?>" 
+                         style="width: 120px; height: 120px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.php?page=match&id=<?= $game['id'] ?>" class="btn" style="border-color: var(--blue); color: var(--blue);">
+                    DÉTAILS DU MATCH
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+</main>
 </body>
 </html>

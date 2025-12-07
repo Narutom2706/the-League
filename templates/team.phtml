@@ -1,0 +1,34 @@
+<?php include 'header.phtml'; ?>
+
+<main class="container" style="text-align: center;">
+    
+    <h1 class="text-pink" style="margin: 40px 0 60px; font-size: 3rem;">
+        <?= htmlspecialchars($team['name']) ?>
+    </h1>
+
+    <?php if (!empty($players)): ?>
+        <div class="grid-3">
+            <?php foreach ($players as $player): ?>
+                <div class="card player">
+                    <a href="index.php?page=player&id=<?= $player['id'] ?>" style="width:100%;">
+                        <img src="<?= htmlspecialchars($player['portrait_url']) ?>" 
+                             alt="<?= htmlspecialchars($player['nickname']) ?>">
+                    </a>
+                    
+                    <h3 class="text-pink" style="margin-top: 15px;">
+                        <?= htmlspecialchars($player['nickname']) ?>
+                    </h3>
+                    
+                    <a href="index.php?page=player&id=<?= $player['id'] ?>" class="btn">
+                        DÉCOUVREZ <?= strtoupper($player['nickname']) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>Aucun joueur trouvé pour cette équipe</p>
+    <?php endif; ?>
+
+</main>
+</body>
+</html>

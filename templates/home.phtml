@@ -1,7 +1,4 @@
-<?php 
-include 'db.php'; 
-include 'header.phtml'; 
-?>
+<?php include 'header.phtml'; ?>
 
 <section class="hero">
     <div class="hero-content">
@@ -12,49 +9,87 @@ include 'header.phtml';
 
 <main class="container">
     
-    <h2 class="text-yellow" style="text-align:center; margin-bottom: 30px; text-decoration: underline;">LA TEAM À LA UNE</h2>
-    
-    <div style="text-align: center;">
-        <div class="card" style="display:inline-block; max-width:400px; border:none; background:none;">
-            <a href="team.phtml?id=1">
-                <img src="assets/img/logo_owls.png" alt="Angry Owls Logo"> 
-            </a>
-            <h3 class="text-yellow">Angry Owls</h3>
-            
-            <div style="display:flex; gap:10px; justify-content:center; margin-top:20px;">
-                <div style="width: 100px;">
-                    <img src="assets/img/player1.jpg" style="width:100%; border-radius:5px;">
-                    <span class="text-pink" style="font-size:0.8rem; display:block;">LADSO</span>
+    <div class="section-container">
+        <h2 class="section-title text-yellow">LA TEAM À LA UNE</h2>
+        
+        <?php if (isset($featuredTeam) && $featuredTeam): ?>
+            <div class="featured-layout">
+                <div class="featured-left">
+                    <a href="index.php?page=team&id=<?= $featuredTeam['id'] ?>">
+                        <img src="<?= htmlspecialchars($featuredTeam['logo_url']) ?>" 
+                             alt="<?= htmlspecialchars($featuredTeam['name']) ?>">
+                    </a>
                 </div>
+
+                <div class="featured-right">
+                    <h3 class="text-yellow"><?= htmlspecialchars($featuredTeam['name']) ?></h3>
+                    <span class="featured-sub">Les players</span>
+
+                    <?php if (!empty($featuredTeamPlayers)): ?>
+                        <div class="mini-grid">
+                            <?php foreach ($featuredTeamPlayers as $player): ?>
+                                <div class="mini-card">
+                                    <a href="index.php?page=player&id=<?= $player['id'] ?>">
+                                        <img src="<?= htmlspecialchars($player['portrait_url']) ?>" 
+                                             alt="<?= htmlspecialchars($player['nickname']) ?>">
+                                    </a>
+                                    <h4><?= htmlspecialchars($player['nickname']) ?></h4>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <div class="section-container">
+        <h2 class="section-title text-pink">LES PLAYERS À LA UNE</h2>
+        
+        <div class="grid-3">
+            <?php if (isset($featuredPlayers) && !empty($featuredPlayers)): ?>
+                <?php foreach ($featuredPlayers as $player): ?>
+                    <div class="card player-card-home">
+                        <a href="index.php?page=player&id=<?= $player['id'] ?>" style="width:100%;">
+                            <img src="<?= htmlspecialchars($player['portrait_url']) ?>" 
+                                 alt="<?= htmlspecialchars($player['nickname']) ?>">
+                        </a>
+                        <h3 class="text-pink"><?= htmlspecialchars($player['nickname']) ?></h3>
+                        <p class="text-yellow player-team-name">
+                            <?= htmlspecialchars($player['team_name'] ?? 'Free Agent') ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
-    <h2 class="text-pink" style="text-align:center; margin: 60px 0 30px; text-decoration: underline;">LES PLAYERS À LA UNE</h2>
-    
-    <div class="grid-3">
-        <div class="card player">
-            <img src="assets/img/dundy.jpg" alt="Dundy">
-            <h3 class="text-pink">DUNDY</h3>
-            <p class="text-yellow">Chatty Parrots</p>
-            <a href="player.phtml?id=10" class="btn">VOIR PROFIL</a>
-        </div>
-        </div>
-
-    <h2 class="text-blue" style="text-align:center; margin: 60px 0 30px; text-decoration: underline;">LE DERNIER MATCH</h2>
-    
-    <div class="card" style="max-width: 800px; margin: 0 auto; padding: 40px;">
-        <h3 style="text-align:center; margin-bottom:10px;">VENDETTA VS OWLS</h3>
-        <p style="text-align:center; font-size: 0.8rem; color: var(--grey);">17/01/2024</p>
+    <div class="section-container">
+        <h2 class="section-title text-blue">LE DERNIER MATCH</h2>
         
-        <div style="display:flex; justify-content: space-around; align-items: center; margin-top: 30px;">
-            <img src="assets/img/logo_vendetta.png" style="width:150px; height:150px;">
-            <span style="font-size: 2rem; font-weight: bold;">VS</span>
-            <img src="assets/img/logo_owls.png" style="width:150px; height:150px;">
+        <?php if (isset($lastMatch) && $lastMatch): ?>
+        <div class="match-card">
+            
+            <h3 class="match-title">
+                <?= htmlspecialchars($lastMatch['team1_name']) ?> VS <?= htmlspecialchars($lastMatch['team2_name']) ?>
+            </h3>
+            
+            <p class="match-date">
+                <?= date("d/m/Y", strtotime($lastMatch['date'])) ?>
+            </p>
+            
+            <div class="match-logos">
+                <div class="match-box-img">
+                     <img src="<?= htmlspecialchars($lastMatch['team1_logo']) ?>" alt="<?= htmlspecialchars($lastMatch['team1_name']) ?>">
+                </div>
+
+                <div class="match-box-img">
+                     <img src="<?= htmlspecialchars($lastMatch['team2_logo']) ?>" alt="<?= htmlspecialchars($lastMatch['team2_name']) ?>">
+                </div>
+            </div>
+            
         </div>
-        <div style="text-align:center;">
-             <a href="match.phtml?id=12" class="btn">DÉTAILS DU MATCH</a>
-        </div>
+        <?php endif; ?>
     </div>
 
 </main>
