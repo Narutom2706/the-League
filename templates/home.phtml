@@ -78,12 +78,12 @@
                 <?= date("d/m/Y", strtotime($lastMatch['date'])) ?>
             </p>
             
-            <div class="match-logos">
-                <div class="match-box-img">
+            <div style="display:flex; justify-content: center; align-items: center; gap: 40px;">
+                <div class="match-box-img <?= ($lastMatch['team_1'] == $lastMatch['winner']) ? 'winner-box' : '' ?>">
                      <img src="<?= htmlspecialchars($lastMatch['team1_logo']) ?>" alt="<?= htmlspecialchars($lastMatch['team1_name']) ?>">
                 </div>
 
-                <div class="match-box-img">
+                <div class="match-box-img <?= ($lastMatch['team_2'] == $lastMatch['winner']) ? 'winner-box' : '' ?>">
                      <img src="<?= htmlspecialchars($lastMatch['team2_logo']) ?>" alt="<?= htmlspecialchars($lastMatch['team2_name']) ?>">
                 </div>
             </div>

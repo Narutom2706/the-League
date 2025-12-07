@@ -12,9 +12,7 @@ try {
 
 $page = $_GET['page'] ?? 'home';
 
-// ----------------------------------------------------------------
-// PAGE : LISTE DES TEAMS
-// ----------------------------------------------------------------
+// --- PAGE : LISTE DES TEAMS -------------------------------------
 if ($page === 'teams') {
     
     // Récupère toutes les équipes
@@ -23,9 +21,8 @@ if ($page === 'teams') {
     
     include 'templates/teams.phtml';
 
-// ----------------------------------------------------------------
-// PAGE : DÉTAIL D'UNE TEAM + SES JOUEURS
-// ----------------------------------------------------------------
+// --- PAGE : DÉTAIL D'UNE TEAM + SES JOUEURS ----------------------
+
 } elseif ($page === 'team') {
     
     if (isset($_GET['id'])) {
@@ -47,9 +44,6 @@ if ($page === 'teams') {
         exit();
     }
 
-// ----------------------------------------------------------------
-// PAGE : LISTE DES JOUEURS
-// ----------------------------------------------------------------
 } elseif ($page === 'players') {
     
     $stmt = $pdo->query("SELECT * FROM players");
@@ -57,9 +51,6 @@ if ($page === 'teams') {
     
     include 'templates/players.phtml';
 
-// ----------------------------------------------------------------
-// PAGE : DÉTAIL D'UN JOUEUR
-// ----------------------------------------------------------------
 } elseif ($page === 'player') {
     
     if (isset($_GET['id'])) {
@@ -84,26 +75,20 @@ if ($page === 'teams') {
         exit();
     }
 
-// ----------------------------------------------------------------
-// PAGE : LISTE DES MATCHS 
-// ----------------------------------------------------------------
+// --- PAGE : LISTE DES MATCHS ----------------------
+
 } elseif ($page === 'matchs') {
     
-    // CORRECTION : Table 'games' et colonne 'date'
     $stmt = $pdo->query("SELECT * FROM games ORDER BY date DESC");
     $matchs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     include 'templates/matchs.phtml';
 
-// ----------------------------------------------------------------
-// PAGE : DÉTAIL D'UN MATCH 
-// ----------------------------------------------------------------
 } elseif ($page === 'match') {
     
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
         
-        // CORRECTION : Table 'games'
         $stmt = $pdo->prepare("SELECT * FROM games WHERE id = ?");
         $stmt->execute([$id]);
         $match = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -114,9 +99,8 @@ if ($page === 'teams') {
         exit();
     }
 
-// ----------------------------------------------------------------
-// PAGE : ACCUEIL (HOME)
-// ----------------------------------------------------------------
+// --- PAGE : ACCEUIL  ----------------------
+
 } else {
     
     $stmtTeam = $pdo->query("SELECT * FROM teams ORDER BY RAND() LIMIT 1");

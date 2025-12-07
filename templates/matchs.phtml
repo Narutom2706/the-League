@@ -14,16 +14,12 @@
 
             <div style="display:flex; justify-content: center; align-items: center; gap: 40px;">
                 
-                <div style="text-align: center;">
-                    <img src="<?= htmlspecialchars($game['team1_logo']) ?>" 
-                         style="width: 120px; height: 120px; object-fit: contain;">
+                <div class="match-box-img <?= ($game['team_1'] == $game['winner']) ? 'winner-box' : '' ?>">
+                      <img src="<?= htmlspecialchars($game['team1_logo']) ?>" alt="<?= htmlspecialchars($game['team1_name']) ?>">
                 </div>
 
-                <span style="font-size: 2rem; font-weight: bold; color: var(--white);">VS</span>
-
-                <div style="text-align: center;">
-                    <img src="<?= htmlspecialchars($game['team2_logo']) ?>" 
-                         style="width: 120px; height: 120px; object-fit: contain;">
+                <div class="match-box-img <?= ($game['team_2'] == $game['winner']) ? 'winner-box' : '' ?>">
+                     <img src="<?= htmlspecialchars($game['team2_logo']) ?>" alt="<?= htmlspecialchars($game['team2_name']) ?>">
                 </div>
             </div>
 
@@ -37,4 +33,3 @@
 
 </main>
 </body>
-</html>

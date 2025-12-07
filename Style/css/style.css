@@ -169,7 +169,7 @@ h2.text-purple { border-color: var(--purple); }
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
+    gap: 120px;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 40px;
@@ -202,7 +202,7 @@ h2.text-purple { border-color: var(--purple); }
 
 .mini-grid {
     display: flex;
-    gap: 60px;
+    gap: 80px;
 }
 
 .mini-card {
@@ -322,8 +322,8 @@ th:first-child, td:first-child {
     background: rgba(21, 29, 48, 0.5);
     padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 200px;
-    height: 200px;
+    width: 350px;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;

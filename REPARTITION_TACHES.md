@@ -12,6 +12,11 @@ verification de correspondace entre site et maquette
 ajustement de index.php
 Modification des commentaires (correction orthographique via gemini comme dit précédament)
 
+Source que j'ai utilisé (j'ai repris les sites et non les pages sinon il y en aurai trop et je me souviens pas de tout) :
+https://developer.mozilla.org/en-US/docs/Web
+https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql
+https://www.w3schools.com/php/php_mysql_intro.asp
+
 Mahé :
 1ere version du code PHTML
 debut du CSS
